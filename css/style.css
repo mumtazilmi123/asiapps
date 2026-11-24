@@ -30,12 +30,14 @@
 
 html, body {
   height: 100%;
+  height: 100dvh;
   width: 100%;
   overflow: hidden;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-page);
   color: var(--text-main);
   font-size: 13px;
+  -webkit-text-size-adjust: 100%;
 }
 
 .hidden {
@@ -106,6 +108,7 @@ html, body {
   transition: background 0.15s;
 }
 .btn-primary:hover { background: var(--primary-hover); }
+.btn-compare-short { display: none; }
 
 .btn-secondary {
   height: 36px;
@@ -126,8 +129,10 @@ html, body {
 .workspace {
   display: flex;
   height: calc(100vh - var(--topbar-h));
+  height: calc(100dvh - var(--topbar-h));
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -138,11 +143,15 @@ html, body {
   display: flex;
   flex-direction: column;
   z-index: 800;
-  transition: margin-left 0.2s ease;
+  transition: margin-left 0.22s ease, transform 0.22s ease;
 }
 
 .sidebar.collapsed {
   margin-left: calc(-1 * var(--sidebar-w));
+}
+
+.sidebar-backdrop {
+  display: none;
 }
 
 .sidebar-scroll {
@@ -1218,20 +1227,313 @@ html, body {
   cursor: pointer;
 }
 
-@media (max-width: 900px) {
-  .sidebar {
-    position: absolute;
-    top: 0; bottom: 0; left: 0;
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.12);
-  }
-  .split-maps, .compare-stats-layout {
-    grid-template-columns: 1fr;
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (DESKTOP, TABLET, HANDPHONE & LANDSCAPE)
+   ========================================================================== */
+
+/* Laptop / Desktop Sedang (1025px – 1366px) */
+@media (max-width: 1366px) {
+  :root {
+    --sidebar-w: 295px;
   }
   .kab-panel {
-    width: calc(100% - 24px);
-    right: 12px;
+    width: clamp(290px, 26vw, 332px);
+  }
+}
+
+/* Tablet & Layar Sempit (<= 960px): Sidebar menjadi drawer overlay */
+@media (max-width: 960px) {
+  :root {
+    --sidebar-w: min(320px, 86vw);
+  }
+  .topbar {
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .topbar-left {
+    min-width: 0;
+    gap: 9px;
+  }
+  .brand {
+    min-width: 0;
+  }
+  .brand h1 {
+    font-size: clamp(13.5px, 2.2vw, 15px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .brand span {
+    display: block;
+    font-size: 10.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: var(--sidebar-w);
+    min-width: 0;
+    margin-left: 0 !important;
+    transform: translateX(0);
+    box-shadow: 6px 0 24px rgba(15, 23, 42, 0.22);
+    z-index: 1120;
+  }
+  .sidebar.collapsed {
+    transform: translateX(-105%);
+    pointer-events: none;
+  }
+  .sidebar-backdrop {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.36);
+    backdrop-filter: blur(1px);
+    z-index: 1100;
+  }
+  .hysplit-player {
+    width: min(560px, calc(100% - 20px));
+  }
+  .kab-panel {
+    width: min(330px, 46vw);
+    max-height: calc(100% - 216px);
+  }
+  .split-maps {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+  .split-panel {
+    min-height: 40dvh;
+  }
+  .compare-map-box {
+    min-height: 32dvh;
+  }
+  .compare-stats-layout {
+    grid-template-columns: 1fr;
+  }
+  .compare-chart-wrap {
+    min-height: 240px;
+  }
+}
+
+/* Handphone Portrait & Layar Kecil (<= 640px) */
+@media (max-width: 640px) {
+  :root {
+    --topbar-h: 52px;
+  }
+  .topbar {
+    padding: 0 10px;
+    gap: 8px;
+  }
+  .brand h1 {
+    font-size: 13.5px;
+  }
+  .brand span {
+    display: none;
+  }
+  .btn-primary {
+    height: 34px;
+    padding: 0 10px;
+    font-size: 11.5px;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .btn-compare-full {
+    display: none;
+  }
+  .btn-compare-short {
+    display: inline;
+  }
+  .map-nav-controls {
+    top: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+  .map-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+  .map-btn span {
+    display: none;
+  }
+  /* Pindahkan legenda ke kiri atas (sebelah zoom +/-) agar tidak bertabrakan dengan tombol ikon kanan & player bawah */
+  .legend-box {
+    top: 10px;
+    bottom: auto;
+    left: 52px;
+    width: min(220px, calc(100vw - 110px));
+    max-height: 44dvh;
+  }
+  .legend-header {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+  .legend-content {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  /* Player HYSPLIT adaptif 2 baris agar angka terpapar selalu terbaca utuh */
+  .hysplit-player {
+    bottom: max(10px, env(safe-area-inset-bottom));
+    width: calc(100% - 16px);
+    padding: 8px 10px;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+  }
+  .player-center {
+    order: 1;
+    flex: 1 1 100%;
+    gap: 4px;
+  }
+  .player-controls {
+    order: 2;
+  }
+  .player-speed {
+    order: 3;
+    margin-left: auto;
+    height: 28px;
+    font-size: 11px;
+  }
+  .player-play-btn {
+    width: 32px;
+    height: 32px;
+  }
+  .player-meta {
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    font-size: 11px;
+  }
+  .player-exposure-bar {
+    white-space: normal;
+    font-size: 10.5px;
+    padding: 4px 7px;
+  }
+  .player-ticks {
+    font-size: 9px;
+  }
+  /* Panel Kabupaten menjadi bottom sheet penuh di HP (di atas attribution Leaflet) */
+  .kab-panel {
+    left: 8px;
+    right: 8px;
+    width: auto;
     top: auto;
-    bottom: 12px;
-    max-height: 62vh;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    max-height: 68dvh;
+    z-index: 1050;
+    border-radius: 14px;
+  }
+  .kab-panel-header {
+    padding: 10px 12px;
+  }
+  .kab-panel-body {
+    padding: 10px 12px 12px;
+  }
+  .kab-chart-wrap {
+    height: 140px;
+  }
+  /* Overlay Bandingkan Tahun di HP */
+  .compare-header {
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .compare-header h2 {
+    font-size: 13.5px;
+  }
+  .compare-header p {
+    display: none;
+  }
+  .btn-secondary {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 11.5px;
+  }
+  .compare-tabs {
+    padding: 0 10px;
+    overflow-x: auto;
+  }
+  .compare-tab {
+    padding: 9px 10px;
+    font-size: 11.5px;
+    white-space: nowrap;
+  }
+  .compare-pane {
+    padding: 10px;
+  }
+  .split-bar {
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    padding: 7px 10px;
+  }
+  .split-stat {
+    margin-left: 0;
+    width: 100%;
+    font-size: 11px;
+  }
+  .compare-chart-card, .compare-table-card {
+    padding: 12px;
+  }
+  .compare-chart-wrap {
+    min-height: 220px;
+  }
+  .compare-table {
+    font-size: 11.5px;
+  }
+  .compare-table th, .compare-table td {
+    padding: 7px 8px;
+    white-space: nowrap;
+  }
+}
+
+/* Handphone Sangat Sempit (<= 400px): tombol navigasi peta ringkas (ikon saja) */
+@media (max-width: 400px) {
+  .map-btn span {
+    display: none;
+  }
+  .map-btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    justify-content: center;
+  }
+  .legend-box {
+    width: calc(100vw - 108px);
+  }
+}
+
+/* Layar Pendek / Handphone Landscape (tinggi <= 520px) */
+@media (max-height: 520px) {
+  :root {
+    --topbar-h: 46px;
+  }
+  .brand span {
+    display: none;
+  }
+  .hysplit-player {
+    bottom: 8px;
+    padding: 6px 10px;
+    gap: 8px;
+  }
+  .player-ticks {
+    display: none;
+  }
+  .kab-panel {
+    top: 8px;
+    bottom: 8px;
+    right: 8px;
+    left: auto;
+    width: min(320px, 48vw);
+    max-height: calc(100% - 16px);
+  }
+  .legend-box {
+    top: 8px;
+    bottom: auto;
+    left: 52px;
+    max-height: 52dvh;
   }
 }

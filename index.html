@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>WebGIS Sebaran Asap HYSPLIT — Papua Selatan (2023–2026)</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23ea580c'/></svg>" />
 
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/style.css?v=11" />
+  <link rel="stylesheet" href="css/style.css?v=14" />
 </head>
 <body>
   <!-- HEADER SEDERHANA -->
@@ -33,7 +33,8 @@
     <div class="topbar-right">
       <button id="btn-compare" class="btn-primary">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="18" rx="1"/><rect x="13" y="3" width="8" height="18" rx="1"/></svg>
-        <span>Bandingkan Tahun (2023–2026)</span>
+        <span class="btn-compare-full">Bandingkan Tahun (2023–2026)</span>
+        <span class="btn-compare-short">Bandingkan</span>
       </button>
     </div>
   </header>
@@ -178,6 +179,7 @@
         </section>
       </div>
     </aside>
+    <div class="sidebar-backdrop hidden" id="sidebar-backdrop" aria-hidden="true"></div>
 
     <!-- VIEWPORT PETA UTAMA (OPENSTREETMAP) -->
     <section class="map-wrap">
@@ -416,6 +418,6 @@
   <script src="js/dampak-asap-2025.js?v=8"></script>
   <script src="js/dampak-asap-2026.js?v=8"></script>
   <script src="js/datasets.js?v=8"></script>
-  <script src="js/app.js?v=11"></script>
+  <script src="js/app.js?v=13"></script>
 </body>
 </html>

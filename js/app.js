@@ -286,11 +286,15 @@
       if (id === kabId && layer.bringToFront) layer.bringToFront();
     });
     const entry = adminFeatureLayers.get(kabId);
-    if (entry && entry.popupHtml) {
+    // Di layar HP/tablet kecil (<= 768px), cukup tampilkan panel bottom-sheet agar tidak bertumpuk ganda dengan popup peta
+    if (window.innerWidth > 768 && entry && entry.popupHtml) {
       const targetLatLng = latlng || (entry.layer.getBounds ? entry.layer.getBounds().getCenter() : null);
       if (targetLatLng) {
         kabPopup = L.popup().setLatLng(targetLatLng).setContent(entry.popupHtml).openOn(map);
       }
+    } else if (kabPopup && map && map.hasLayer(kabPopup)) {
+      map.closePopup(kabPopup);
+      kabPopup = null;
     }
     renderKabupatenInfoPanel(kabId);
   }
@@ -825,6 +829,7 @@
         });
         document.getElementById("btn-select-all-years").classList.remove("active");
         refreshAll();
+        if (window.innerWidth <= 960) setSidebarOpen(false);
       });
     });
   }
@@ -1128,15 +1133,68 @@
     }
   }
 
+  function setSidebarOpen(isOpen) {
+    const sidebar = document.getElementById("sidebar");
+    const backdrop = document.getElementById("sidebar-backdrop");
+    sidebar.classList.toggle("collapsed", !isOpen);
+    if (backdrop) {
+      const showBackdrop = isOpen && window.innerWidth <= 960;
+      backdrop.classList.toggle("hidden", !showBackdrop);
+    }
+    setTimeout(() => {
+      if (map) map.invalidateSize();
+    }, 240);
+  }
+
+  function applyInitialResponsiveState() {
+    const isCompact = window.innerWidth <= 960;
+    setSidebarOpen(!isCompact);
+    const legendEl = document.getElementById("dynamic-legend");
+    if (legendEl && (window.innerWidth <= 640 || window.innerHeight <= 520)) {
+      legendEl.classList.add("collapsed");
+    }
+  }
+
   // =========================================================================
   // 5. EVENT LISTENERS
   // =========================================================================
   function bindEvents() {
-    // Toggle Sidebar
+    // Toggle Sidebar & Backdrop (responsif HP/Tablet/Desktop)
     document.getElementById("btn-toggle-sidebar").addEventListener("click", () => {
-      document.getElementById("sidebar").classList.toggle("collapsed");
-      setTimeout(() => map.invalidateSize(), 220);
+      const isCurrentlyCollapsed = document.getElementById("sidebar").classList.contains("collapsed");
+      setSidebarOpen(isCurrentlyCollapsed);
     });
+
+    const backdrop = document.getElementById("sidebar-backdrop");
+    if (backdrop) {
+      backdrop.addEventListener("click", () => setSidebarOpen(false));
+    }
+
+    // Sinkronkan ukuran peta & backdrop saat layar di-resize atau orientasi HP/tablet diputar
+    let resizeTimer = null;
+    const handleViewportChange = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const sb = document.getElementById("sidebar");
+        const bd = document.getElementById("sidebar-backdrop");
+        if (bd && sb) {
+          const isOpen = !sb.classList.contains("collapsed");
+          bd.classList.toggle("hidden", !(isOpen && window.innerWidth <= 960));
+        }
+        if (window.innerWidth <= 768 && kabPopup && map && map.hasLayer(kabPopup)) {
+          map.closePopup(kabPopup);
+          kabPopup = null;
+        }
+        if (map) map.invalidateSize();
+        const cmpOpen = !document.getElementById("compare-overlay").classList.contains("hidden");
+        if (cmpOpen && mapLeft && mapRight) {
+          mapLeft.invalidateSize();
+          mapRight.invalidateSize();
+        }
+      }, 160);
+    };
+    window.addEventListener("resize", handleViewportChange);
+    window.addEventListener("orientationchange", handleViewportChange);
 
     // Toggle 4 Layer (dapat aktif bersamaan)
     const bindLayerToggle = (id, key, layer) => {
@@ -1270,6 +1328,7 @@
     // Modal / Overlay Perbandingan Tahun (2023–2026)
     const overlay = document.getElementById("compare-overlay");
     document.getElementById("btn-compare").addEventListener("click", () => {
+      if (window.innerWidth <= 960) setSidebarOpen(false);
       overlay.classList.remove("hidden");
       initCompareView();
     });
@@ -1348,6 +1407,7 @@
 
   // Bootstrap
   document.addEventListener("DOMContentLoaded", async () => {
+    applyInitialResponsiveState();
     initMainMap();
     bindEvents();
     await loadExternalGeoJSON();
