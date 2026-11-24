@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebGIS Sebaran Asap HYSPLIT — Papua Selatan (2023–2026)</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23ea580c'/></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css?v=11" />
+</head>
+<body>
+  <!-- HEADER SEDERHANA -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="btn-toggle-sidebar" class="icon-btn" title="Tampilkan/Sembunyikan Panel Kontrol" aria-label="Toggle Panel">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="brand">
+        <h1>WebGIS Persebaran Asap Karhutla</h1>
+        <span>Provinsi Papua Selatan · Visualisasi HYSPLIT (2023–2026)</span>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <button id="btn-compare" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="18" rx="1"/><rect x="13" y="3" width="8" height="18" rx="1"/></svg>
+        <span>Bandingkan Tahun (2023–2026)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- WORKSPACE UTAMA -->
+  <main class="workspace">
+    <!-- PANEL KONTROL KIRI (LAYER & FILTER TAHUN) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-scroll">
+        <!-- 1. FILTER TAHUN (2023 - 2026) -->
+        <section class="card">
+          <div class="card-header">
+            <h2>Filter Tahun</h2>
+            <button id="btn-reset-filter" class="btn-reset">Reset Filter</button>
+          </div>
+          <p class="helper-text">Klik tahun untuk menampilkan data hotspot, HYSPLIT, &amp; populasi tahun tersebut:</p>
+          <div class="year-grid" id="year-filter-group">
+            <button type="button" class="year-btn" data-year="2023">
+              <span class="year-dot" style="background:#2563eb;"></span>
+              <span>2023</span>
+            </button>
+            <button type="button" class="year-btn" data-year="2024">
+              <span class="year-dot" style="background:#16a34a;"></span>
+              <span>2024</span>
+            </button>
+            <button type="button" class="year-btn" data-year="2025">
+              <span class="year-dot" style="background:#f59e0b;"></span>
+              <span>2025</span>
+            </button>
+            <button type="button" class="year-btn active" data-year="2026">
+              <span class="year-dot" style="background:#dc2626;"></span>
+              <span>2026</span>
+            </button>
+          </div>
+          <div class="quick-year-actions">
+            <button type="button" class="mini-btn" id="btn-select-all-years">Tampilkan Semua Tahun (2023–2026)</button>
+          </div>
+        </section>
+
+        <!-- 2. PANEL AKTIF/NONAKTIF LAYER -->
+        <section class="card">
+          <div class="card-header">
+            <h2>Kontrol Layer</h2>
+          </div>
+          <p class="helper-text">Beberapa layer dapat ditampilkan secara bersamaan:</p>
+
+          <div class="layer-list">
+            <label class="layer-row">
+              <div class="layer-label">
+                <span class="swatch swatch-hotspot"></span>
+                <div>
+                  <strong>Layer Hotspot (VIIRS)</strong>
+                  <small id="count-hotspot-label">Memuat...</small>
+                </div>
+              </div>
+              <input type="checkbox" id="toggle-hotspot" checked />
+            </label>
+
+            <label class="layer-row">
+              <div class="layer-label">
+                <span class="swatch swatch-hysplit"></span>
+                <div>
+                  <strong>Layer Hasil HYSPLIT</strong>
+                  <small id="hysplit-layer-subtitle">21 Ags 2026 (Animasi 24 Jam)</small>
+                </div>
+              </div>
+              <input type="checkbox" id="toggle-hysplit" checked />
+            </label>
+            <div class="opacity-control">
+              <span>Opasitas HYSPLIT</span>
+              <input type="range" id="opacity-hysplit" min="0.1" max="0.9" step="0.05" value="0.55" />
+              <span id="opacity-hysplit-val">55%</span>
+            </div>
+
+            <label class="layer-row">
+              <div class="layer-label">
+                <span class="swatch swatch-admin"></span>
+                <div>
+                  <strong>Batas Administrasi Papua Selatan</strong>
+                  <small>4 Kabupaten (Merauke, Boven Digoel, Mappi, Asmat)</small>
+                </div>
+              </div>
+              <input type="checkbox" id="toggle-admin" checked />
+            </label>
+
+            <label class="layer-row">
+              <div class="layer-label">
+                <span class="swatch swatch-pop"></span>
+                <div>
+                  <strong>Populasi Papua Selatan (WorldPop)</strong>
+                  <small id="pop-layer-subtitle">Raster WorldPop 100m (2023–2026)</small>
+                </div>
+              </div>
+              <input type="checkbox" id="toggle-pop" />
+            </label>
+            <div class="opacity-control">
+              <span>Opasitas Populasi</span>
+              <input type="range" id="opacity-pop" min="0.15" max="0.85" step="0.05" value="0.45" />
+              <span id="opacity-pop-val">45%</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- RINGKASAN DATA TERFILTER -->
+        <section class="card summary-card">
+          <div class="card-header">
+            <h2>Ringkasan Tampilan</h2>
+          </div>
+          <div class="summary-stats">
+            <div class="stat-box">
+              <span>Tahun Aktif</span>
+              <strong id="stat-years">2026</strong>
+            </div>
+            <div class="stat-box">
+              <span>Total Hotspot</span>
+              <strong id="stat-hotspots">0</strong>
+            </div>
+            <div class="stat-box stat-box-wide">
+              <span id="stat-pop-label">Populasi Papua Selatan (2026)</span>
+              <strong id="stat-pop">-</strong>
+            </div>
+            <div class="stat-box stat-box-wide stat-box-exposure" id="stat-exposure-box">
+              <span id="stat-exposure-label">Estimasi Terpapar Asap (Jam 01/24)</span>
+              <strong id="stat-exposure">-</strong>
+              <small id="stat-exposure-sub">-</small>
+            </div>
+          </div>
+
+          <div class="prov-yearly-box">
+            <div class="prov-yearly-header">
+              <strong>Terdampak 1 Provinsi per Tahun (24j Unik)</strong>
+              <span>Klik tahun</span>
+            </div>
+            <div class="prov-yearly-list" id="prov-exposure-yearly">
+              <!-- Diisi dinamis 2023–2026 -->
+            </div>
+          </div>
+
+          <p class="note-box">
+            <strong>Catatan:</strong> Seluruh data — <em>Batas Administrasi</em> (<code>AOI_PapuaSelatan.shp</code>), <em>Hotspot VIIRS</em> (2023–2026), <em>Populasi WorldPop 100m</em> (2023–2026), serta <em>HYSPLIT 24 Jam</em> &amp; estimasi penduduk terpapar (2023–2026) — menggunakan data asli hasil pengolahan.
+          </p>
+        </section>
+      </div>
+    </aside>
+
+    <!-- VIEWPORT PETA UTAMA (OPENSTREETMAP) -->
+    <section class="map-wrap">
+      <div id="map"></div>
+
+      <!-- TOMBOL NAVIGASI PETA (ZOOM KE PAPUA SELATAN & TAMPILAN AWAL) -->
+      <div class="map-nav-controls">
+        <button id="btn-zoom-papua" class="map-btn" title="Zoom langsung ke batas wilayah Provinsi Papua Selatan">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span>Zoom ke Papua Selatan</span>
+        </button>
+        <button id="btn-initial-view" class="map-btn" title="Kembali ke tampilan awal peta">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Tampilan Awal</span>
+        </button>
+      </div>
+
+      <!-- LEGENDA PETA DINAMIS -->
+      <div class="legend-box" id="dynamic-legend">
+        <div class="legend-header" id="legend-toggle">
+          <span>Legenda Peta</span>
+          <span class="legend-chevron">▾</span>
+        </div>
+        <div class="legend-content" id="legend-content">
+          <!-- Diisi dinamis sesuai layer yang aktif -->
+        </div>
+      </div>
+
+      <!-- KONTROL ANIMASI 24 JAM HYSPLIT 2026 (21 AGUSTUS 2026) -->
+      <div class="hysplit-player" id="hysplit-player">
+        <div class="player-controls">
+          <button type="button" id="btn-hysplit-prev" class="player-step-btn" title="Jam sebelumnya" aria-label="Jam sebelumnya">◀</button>
+          <button type="button" id="btn-hysplit-play" class="player-play-btn" title="Putar / Jeda Animasi 24 Jam HYSPLIT" aria-label="Play/Pause Animasi">
+            <svg id="icon-hysplit-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+            <svg id="icon-hysplit-pause" class="hidden" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+          <button type="button" id="btn-hysplit-next" class="player-step-btn" title="Jam berikutnya" aria-label="Jam berikutnya">▶</button>
+        </div>
+
+        <div class="player-center">
+          <div class="player-meta">
+            <strong id="hysplit-time-label">Jam 01/24 · 21 Ags 2026 10:00 WIT</strong>
+            <span id="hysplit-area-label">Luas: -</span>
+          </div>
+          <div class="player-exposure-bar" id="hysplit-exposure-label">Terpapar: Memuat...</div>
+          <input type="range" id="hysplit-hour-slider" min="1" max="24" step="1" value="1" />
+          <div class="player-ticks">
+            <span>Jam 1</span>
+            <span>Jam 6</span>
+            <span>Jam 12</span>
+            <span>Jam 18</span>
+            <span>Jam 24</span>
+          </div>
+        </div>
+
+        <select id="hysplit-speed" class="player-speed" title="Kecepatan animasi" aria-label="Kecepatan animasi">
+          <option value="950">0.5x</option>
+          <option value="550" selected>1x</option>
+          <option value="280">2x</option>
+        </select>
+      </div>
+
+      <!-- PANEL INFORMASI JUMLAH PENDUDUK KABUPATEN (MUNCUL SAAT POLIGON KABUPATEN DIKLIK) -->
+      <aside class="kab-panel hidden" id="kab-info-panel" aria-live="polite">
+        <div class="kab-panel-header">
+          <div>
+            <h3 id="kab-panel-title">Kabupaten</h3>
+            <span id="kab-panel-meta">Provinsi Papua Selatan</span>
+          </div>
+          <button type="button" id="btn-close-kab-panel" class="kab-close-btn" title="Tutup panel informasi" aria-label="Tutup panel">&times;</button>
+        </div>
+        <div class="kab-panel-body">
+          <div class="kab-highlight-box" id="kab-active-year-card">
+            <span id="kab-active-year-label">Estimasi Penduduk</span>
+            <strong id="kab-active-year-value">-</strong>
+            <small id="kab-active-year-sub"></small>
+          </div>
+
+          <div class="kab-exposure-box" id="kab-exposure-box">
+            <!-- Estimasi penduduk terpapar asap HYSPLIT (mengikuti tahun & jam aktif) -->
+          </div>
+
+          <div class="kab-section-title">Estimasi Jumlah Penduduk (2023–2026)</div>
+          <table class="kab-pop-table">
+            <thead>
+              <tr>
+                <th>Tahun</th>
+                <th>Estimasi Jumlah Penduduk</th>
+              </tr>
+            </thead>
+            <tbody id="kab-pop-table-body">
+              <!-- Diisi dinamis dari atribut GeoJSON -->
+            </tbody>
+          </table>
+
+          <div class="kab-change-box" id="kab-pop-change">
+            <!-- Perubahan jumlah penduduk 2023 hingga 2026 -->
+          </div>
+
+          <div class="kab-section-title" style="margin-top:10px;">Grafik Perubahan Penduduk (2023–2026)</div>
+          <div class="kab-chart-wrap">
+            <canvas id="chart-kab-pop"></canvas>
+          </div>
+          <p class="kab-source-note" id="kab-panel-source">Sumber: WorldPop Population Count 100m (Zonal Statistics)</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- OVERLAY PERBANDINGAN DATA TAHUN 2023, 2024, 2025, DAN 2026 -->
+  <div class="compare-overlay hidden" id="compare-overlay" role="dialog" aria-modal="true" aria-labelledby="compare-title">
+    <div class="compare-header">
+      <div>
+        <h2 id="compare-title">Perbandingan Data Karhutla &amp; HYSPLIT (2023 – 2026)</h2>
+        <p>Bandingkan sebaran spasial dua tahun secara berdampingan (peta tersinkronisasi) serta ringkasan statistik 4 tahun.</p>
+      </div>
+      <button id="btn-close-compare" class="btn-secondary">Kembali ke Peta Utama</button>
+    </div>
+
+    <div class="compare-tabs">
+      <button class="compare-tab active" data-ctab="ctab-maps">Peta Berdampingan (Split Map)</button>
+      <button class="compare-tab" data-ctab="ctab-stats">Grafik &amp; Tabel 2023–2026</button>
+    </div>
+
+    <!-- TAB 1: SPLIT MAP TERSINKRONISASI -->
+    <div class="compare-pane active" id="ctab-maps">
+      <div class="split-maps">
+        <div class="split-panel">
+          <div class="split-bar">
+            <label for="compare-year-left"><strong>Peta Kiri — Tahun:</strong></label>
+            <select id="compare-year-left" class="year-select">
+              <option value="2023" selected>2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+            </select>
+            <span class="split-stat" id="split-stat-left"></span>
+          </div>
+          <div id="map-compare-left" class="compare-map-box"></div>
+        </div>
+
+        <div class="split-panel">
+          <div class="split-bar">
+            <label for="compare-year-right"><strong>Peta Kanan — Tahun:</strong></label>
+            <select id="compare-year-right" class="year-select">
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026" selected>2026</option>
+            </select>
+            <span class="split-stat" id="split-stat-right"></span>
+          </div>
+          <div id="map-compare-right" class="compare-map-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: GRAFIK & TABEL PERBANDINGAN 4 TAHUN -->
+    <div class="compare-pane" id="ctab-stats">
+      <div class="compare-stats-layout">
+        <div class="compare-chart-card">
+          <h3>Perbandingan Jumlah Hotspot &amp; Luas Sebaran HYSPLIT (2023–2026)</h3>
+          <div class="compare-chart-legend">
+            <div class="ccl-group">
+              <span class="ccl-label">Batang — Jumlah Hotspot (sumbu kiri):</span>
+              <span class="ccl-chip"><i style="background:#2563eb;"></i>2023</span>
+              <span class="ccl-chip"><i style="background:#16a34a;"></i>2024</span>
+              <span class="ccl-chip"><i style="background:#f59e0b;"></i>2025</span>
+              <span class="ccl-chip"><i style="background:#dc2626;"></i>2026</span>
+            </div>
+            <div class="ccl-group">
+              <span class="ccl-line-chip"><span></span>Luas Sebaran HYSPLIT — km² (sumbu kanan)</span>
+            </div>
+          </div>
+          <div class="compare-chart-wrap">
+            <canvas id="chart-compare-years"></canvas>
+          </div>
+        </div>
+
+        <div class="compare-chart-card">
+          <h3>Populasi Terdampak Asap 1 Provinsi Papua Selatan (2023–2026)</h3>
+          <div class="compare-chart-legend">
+            <div class="ccl-group">
+              <span class="ccl-chip"><i style="background:#cbd5e1;border:1px solid #94a3b8;"></i>Total Populasi Provinsi</span>
+              <span class="ccl-chip"><i style="background:#ea580c;"></i>Terpapar Unik 24 Jam</span>
+              <span class="ccl-chip"><i style="background:#b91c1c;"></i>Paparan Asap Pekat (Tertinggi)</span>
+            </div>
+          </div>
+          <div class="compare-chart-wrap">
+            <canvas id="chart-compare-exposure"></canvas>
+          </div>
+        </div>
+
+        <div class="compare-table-card compare-table-full">
+          <h3>Ringkasan Data 1 Provinsi per Tahun &amp; Kabupaten</h3>
+          <div class="table-scroll">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Tahun</th>
+                  <th>Total Hotspot</th>
+                  <th>Merauke</th>
+                  <th>Boven Digoel</th>
+                  <th>Mappi</th>
+                  <th>Asmat</th>
+                  <th>Luas HYSPLIT (km²)</th>
+                  <th>Populasi Provinsi</th>
+                  <th>Terpapar Unik 24j (Provinsi)</th>
+                  <th>Asap Pekat (Tertinggi)</th>
+                </tr>
+              </thead>
+              <tbody id="compare-table-body">
+                <!-- Diisi dinamis -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Libraries -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Data & App -->
+  <script src="js/aoi-papua-selatan.js?v=8"></script>
+  <script src="js/viirs-hotspots-2023-2026.js?v=8"></script>
+  <script src="js/worldpop-data.js?v=8"></script>
+  <script src="js/hysplit-2023-data.js?v=8"></script>
+  <script src="js/hysplit-2024-data.js?v=8"></script>
+  <script src="js/hysplit-2025-data.js?v=8"></script>
+  <script src="js/hysplit-2026-data.js?v=8"></script>
+  <script src="js/dampak-asap-2023.js?v=8"></script>
+  <script src="js/dampak-asap-2024.js?v=8"></script>
+  <script src="js/dampak-asap-2025.js?v=8"></script>
+  <script src="js/dampak-asap-2026.js?v=8"></script>
+  <script src="js/datasets.js?v=8"></script>
+  <script src="js/app.js?v=11"></script>
+</body>
+</html>

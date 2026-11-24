@@ -1,0 +1,886 @@
+{
+  "tahun": 2025,
+  "tanggal": "2 September 2025",
+  "sumber_asap": "NOAA HYSPLIT concplot (24 Jam — 2 September 2025)",
+  "sumber_populasi": "WorldPop Population Count Constrained 100m 2025 (R2025A v1)",
+  "provinsi": {
+    "populasi": 544513,
+    "unik_terpapar_24j": 198492,
+    "persen_unik_24j": 36.45,
+    "puncak_per_jam": {
+      "jam_ke": 23,
+      "terpapar": 124118,
+      "waktu_wit": "03 Sep 2025 08:00 WIT"
+    },
+    "level_tertinggi_24j": {
+      "level_1_terluar": 5043,
+      "level_2_rendah": 124588,
+      "level_3_sedang": 64841,
+      "level_4_tinggi": 4019
+    }
+  },
+  "kabupaten": {
+    "merauke": {
+      "kabupaten": "Kabupaten Merauke",
+      "populasi_2025": 245113,
+      "unik_terpapar_24j": 11026,
+      "persen_unik_24j": 4.5,
+      "puncak_per_jam": {
+        "jam_ke": 22,
+        "terpapar": 8176,
+        "waktu_wit": "03 Sep 2025 07:00 WIT"
+      },
+      "level_tertinggi_24j": {
+        "level_1_terluar": 307,
+        "level_2_rendah": 2109,
+        "level_3_sedang": 5547,
+        "level_4_tinggi": 3063
+      }
+    },
+    "asmat": {
+      "kabupaten": "Kabupaten Asmat",
+      "populasi_2025": 116126,
+      "unik_terpapar_24j": 83139,
+      "persen_unik_24j": 71.59,
+      "puncak_per_jam": {
+        "jam_ke": 23,
+        "terpapar": 61612,
+        "waktu_wit": "03 Sep 2025 08:00 WIT"
+      },
+      "level_tertinggi_24j": {
+        "level_1_terluar": 2900,
+        "level_2_rendah": 65920,
+        "level_3_sedang": 14319,
+        "level_4_tinggi": 0
+      }
+    },
+    "mappi": {
+      "kabupaten": "Kabupaten Mappi",
+      "populasi_2025": 116060,
+      "unik_terpapar_24j": 102455,
+      "persen_unik_24j": 88.28,
+      "puncak_per_jam": {
+        "jam_ke": 17,
+        "terpapar": 72087,
+        "waktu_wit": "03 Sep 2025 02:00 WIT"
+      },
+      "level_tertinggi_24j": {
+        "level_1_terluar": 1591,
+        "level_2_rendah": 55494,
+        "level_3_sedang": 44414,
+        "level_4_tinggi": 956
+      }
+    },
+    "boven_digoel": {
+      "kabupaten": "Kabupaten Boven Digoel",
+      "populasi_2025": 67214,
+      "unik_terpapar_24j": 1872,
+      "persen_unik_24j": 2.79,
+      "puncak_per_jam": {
+        "jam_ke": 12,
+        "terpapar": 774,
+        "waktu_wit": "02 Sep 2025 21:00 WIT"
+      },
+      "level_tertinggi_24j": {
+        "level_1_terluar": 245,
+        "level_2_rendah": 1065,
+        "level_3_sedang": 561,
+        "level_4_tinggi": 0
+      }
+    }
+  },
+  "per_jam": [
+    {
+      "jam_ke": 1,
+      "date": "20250902",
+      "time_utc": "0100",
+      "waktu_utc": "02 Sep 2025 01:00 UTC",
+      "waktu_wit": "02 Sep 2025 10:00 WIT",
+      "total_terpapar": 4576,
+      "persen_provinsi": 0.84,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 4576,
+          "persen": 1.87
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "boven_digoel": {
+          "terpapar": 0,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 351,
+        "level_2_rendah": 1122,
+        "level_3_sedang": 2841,
+        "level_4_tinggi": 262
+      }
+    },
+    {
+      "jam_ke": 2,
+      "date": "20250902",
+      "time_utc": "0200",
+      "waktu_utc": "02 Sep 2025 02:00 UTC",
+      "waktu_wit": "02 Sep 2025 11:00 WIT",
+      "total_terpapar": 5760,
+      "persen_provinsi": 1.06,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 5583,
+          "persen": 2.28
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 177,
+          "persen": 0.15
+        },
+        "boven_digoel": {
+          "terpapar": 0,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 182,
+        "level_2_rendah": 1501,
+        "level_3_sedang": 4076,
+        "level_4_tinggi": 1
+      }
+    },
+    {
+      "jam_ke": 3,
+      "date": "20250902",
+      "time_utc": "0300",
+      "waktu_utc": "02 Sep 2025 03:00 UTC",
+      "waktu_wit": "02 Sep 2025 12:00 WIT",
+      "total_terpapar": 6309,
+      "persen_provinsi": 1.16,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 5292,
+          "persen": 2.16
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 1017,
+          "persen": 0.88
+        },
+        "boven_digoel": {
+          "terpapar": 0,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 376,
+        "level_2_rendah": 1896,
+        "level_3_sedang": 4010,
+        "level_4_tinggi": 27
+      }
+    },
+    {
+      "jam_ke": 4,
+      "date": "20250902",
+      "time_utc": "0400",
+      "waktu_utc": "02 Sep 2025 04:00 UTC",
+      "waktu_wit": "02 Sep 2025 13:00 WIT",
+      "total_terpapar": 6937,
+      "persen_provinsi": 1.27,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6138,
+          "persen": 2.5
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 799,
+          "persen": 0.69
+        },
+        "boven_digoel": {
+          "terpapar": 0,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 84,
+        "level_2_rendah": 2556,
+        "level_3_sedang": 4280,
+        "level_4_tinggi": 17
+      }
+    },
+    {
+      "jam_ke": 5,
+      "date": "20250902",
+      "time_utc": "0500",
+      "waktu_utc": "02 Sep 2025 05:00 UTC",
+      "waktu_wit": "02 Sep 2025 14:00 WIT",
+      "total_terpapar": 5404,
+      "persen_provinsi": 0.99,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 4540,
+          "persen": 1.85
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 864,
+          "persen": 0.74
+        },
+        "boven_digoel": {
+          "terpapar": 0,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 442,
+        "level_2_rendah": 1569,
+        "level_3_sedang": 3249,
+        "level_4_tinggi": 144
+      }
+    },
+    {
+      "jam_ke": 6,
+      "date": "20250902",
+      "time_utc": "0600",
+      "waktu_utc": "02 Sep 2025 06:00 UTC",
+      "waktu_wit": "02 Sep 2025 15:00 WIT",
+      "total_terpapar": 12716,
+      "persen_provinsi": 2.34,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6628,
+          "persen": 2.7
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 6088,
+          "persen": 5.25
+        },
+        "boven_digoel": {
+          "terpapar": 0,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 1875,
+        "level_2_rendah": 6436,
+        "level_3_sedang": 3840,
+        "level_4_tinggi": 565
+      }
+    },
+    {
+      "jam_ke": 7,
+      "date": "20250902",
+      "time_utc": "0700",
+      "waktu_utc": "02 Sep 2025 07:00 UTC",
+      "waktu_wit": "02 Sep 2025 16:00 WIT",
+      "total_terpapar": 12559,
+      "persen_provinsi": 2.31,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 5449,
+          "persen": 2.22
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 7110,
+          "persen": 6.13
+        },
+        "boven_digoel": {
+          "terpapar": 0,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 817,
+        "level_2_rendah": 3202,
+        "level_3_sedang": 8482,
+        "level_4_tinggi": 59
+      }
+    },
+    {
+      "jam_ke": 8,
+      "date": "20250902",
+      "time_utc": "0800",
+      "waktu_utc": "02 Sep 2025 08:00 UTC",
+      "waktu_wit": "02 Sep 2025 17:00 WIT",
+      "total_terpapar": 14613,
+      "persen_provinsi": 2.68,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 5651,
+          "persen": 2.31
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 8703,
+          "persen": 7.5
+        },
+        "boven_digoel": {
+          "terpapar": 259,
+          "persen": 0.39
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 5542,
+        "level_2_rendah": 7379,
+        "level_3_sedang": 1692,
+        "level_4_tinggi": 0
+      }
+    },
+    {
+      "jam_ke": 9,
+      "date": "20250902",
+      "time_utc": "0900",
+      "waktu_utc": "02 Sep 2025 09:00 UTC",
+      "waktu_wit": "02 Sep 2025 18:00 WIT",
+      "total_terpapar": 15175,
+      "persen_provinsi": 2.79,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 4542,
+          "persen": 1.85
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 10631,
+          "persen": 9.16
+        },
+        "boven_digoel": {
+          "terpapar": 2,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 1709,
+        "level_2_rendah": 3745,
+        "level_3_sedang": 7592,
+        "level_4_tinggi": 2130
+      }
+    },
+    {
+      "jam_ke": 10,
+      "date": "20250902",
+      "time_utc": "1000",
+      "waktu_utc": "02 Sep 2025 10:00 UTC",
+      "waktu_wit": "02 Sep 2025 19:00 WIT",
+      "total_terpapar": 10207,
+      "persen_provinsi": 1.87,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 4834,
+          "persen": 1.97
+        },
+        "asmat": {
+          "terpapar": 11,
+          "persen": 0.01
+        },
+        "mappi": {
+          "terpapar": 5103,
+          "persen": 4.4
+        },
+        "boven_digoel": {
+          "terpapar": 259,
+          "persen": 0.39
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 851,
+        "level_2_rendah": 2655,
+        "level_3_sedang": 4961,
+        "level_4_tinggi": 1740
+      }
+    },
+    {
+      "jam_ke": 11,
+      "date": "20250902",
+      "time_utc": "1100",
+      "waktu_utc": "02 Sep 2025 11:00 UTC",
+      "waktu_wit": "02 Sep 2025 20:00 WIT",
+      "total_terpapar": 9665,
+      "persen_provinsi": 1.77,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 4423,
+          "persen": 1.8
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 4820,
+          "persen": 4.15
+        },
+        "boven_digoel": {
+          "terpapar": 422,
+          "persen": 0.63
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 2368,
+        "level_2_rendah": 3887,
+        "level_3_sedang": 3410,
+        "level_4_tinggi": 0
+      }
+    },
+    {
+      "jam_ke": 12,
+      "date": "20250902",
+      "time_utc": "1200",
+      "waktu_utc": "02 Sep 2025 12:00 UTC",
+      "waktu_wit": "02 Sep 2025 21:00 WIT",
+      "total_terpapar": 26340,
+      "persen_provinsi": 4.84,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 4649,
+          "persen": 1.9
+        },
+        "asmat": {
+          "terpapar": 0,
+          "persen": 0.0
+        },
+        "mappi": {
+          "terpapar": 20917,
+          "persen": 18.02
+        },
+        "boven_digoel": {
+          "terpapar": 774,
+          "persen": 1.15
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 11553,
+        "level_2_rendah": 10779,
+        "level_3_sedang": 4008,
+        "level_4_tinggi": 0
+      }
+    },
+    {
+      "jam_ke": 13,
+      "date": "20250902",
+      "time_utc": "1300",
+      "waktu_utc": "02 Sep 2025 13:00 UTC",
+      "waktu_wit": "02 Sep 2025 22:00 WIT",
+      "total_terpapar": 61291,
+      "persen_provinsi": 11.26,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 5578,
+          "persen": 2.28
+        },
+        "asmat": {
+          "terpapar": 464,
+          "persen": 0.4
+        },
+        "mappi": {
+          "terpapar": 54988,
+          "persen": 47.38
+        },
+        "boven_digoel": {
+          "terpapar": 261,
+          "persen": 0.39
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 7391,
+        "level_2_rendah": 49161,
+        "level_3_sedang": 4740,
+        "level_4_tinggi": 0
+      }
+    },
+    {
+      "jam_ke": 14,
+      "date": "20250902",
+      "time_utc": "1400",
+      "waktu_utc": "02 Sep 2025 14:00 UTC",
+      "waktu_wit": "02 Sep 2025 23:00 WIT",
+      "total_terpapar": 69905,
+      "persen_provinsi": 12.84,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6237,
+          "persen": 2.54
+        },
+        "asmat": {
+          "terpapar": 1437,
+          "persen": 1.24
+        },
+        "mappi": {
+          "terpapar": 62221,
+          "persen": 53.61
+        },
+        "boven_digoel": {
+          "terpapar": 10,
+          "persen": 0.01
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 14883,
+        "level_2_rendah": 48896,
+        "level_3_sedang": 6125,
+        "level_4_tinggi": 1
+      }
+    },
+    {
+      "jam_ke": 15,
+      "date": "20250902",
+      "time_utc": "1500",
+      "waktu_utc": "02 Sep 2025 15:00 UTC",
+      "waktu_wit": "03 Sep 2025 00:00 WIT",
+      "total_terpapar": 44436,
+      "persen_provinsi": 8.16,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6392,
+          "persen": 2.61
+        },
+        "asmat": {
+          "terpapar": 3455,
+          "persen": 2.98
+        },
+        "mappi": {
+          "terpapar": 34560,
+          "persen": 29.78
+        },
+        "boven_digoel": {
+          "terpapar": 29,
+          "persen": 0.04
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 18904,
+        "level_2_rendah": 21107,
+        "level_3_sedang": 4423,
+        "level_4_tinggi": 3
+      }
+    },
+    {
+      "jam_ke": 16,
+      "date": "20250902",
+      "time_utc": "1600",
+      "waktu_utc": "02 Sep 2025 16:00 UTC",
+      "waktu_wit": "03 Sep 2025 01:00 WIT",
+      "total_terpapar": 79948,
+      "persen_provinsi": 14.68,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6259,
+          "persen": 2.55
+        },
+        "asmat": {
+          "terpapar": 8809,
+          "persen": 7.59
+        },
+        "mappi": {
+          "terpapar": 64472,
+          "persen": 55.55
+        },
+        "boven_digoel": {
+          "terpapar": 408,
+          "persen": 0.61
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 11116,
+        "level_2_rendah": 49422,
+        "level_3_sedang": 19408,
+        "level_4_tinggi": 2
+      }
+    },
+    {
+      "jam_ke": 17,
+      "date": "20250902",
+      "time_utc": "1700",
+      "waktu_utc": "02 Sep 2025 17:00 UTC",
+      "waktu_wit": "03 Sep 2025 02:00 WIT",
+      "total_terpapar": 85985,
+      "persen_provinsi": 15.79,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6278,
+          "persen": 2.56
+        },
+        "asmat": {
+          "terpapar": 7133,
+          "persen": 6.14
+        },
+        "mappi": {
+          "terpapar": 72087,
+          "persen": 62.11
+        },
+        "boven_digoel": {
+          "terpapar": 487,
+          "persen": 0.72
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 25269,
+        "level_2_rendah": 51195,
+        "level_3_sedang": 9520,
+        "level_4_tinggi": 0
+      }
+    },
+    {
+      "jam_ke": 18,
+      "date": "20250902",
+      "time_utc": "1800",
+      "waktu_utc": "02 Sep 2025 18:00 UTC",
+      "waktu_wit": "03 Sep 2025 03:00 WIT",
+      "total_terpapar": 73354,
+      "persen_provinsi": 13.47,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6826,
+          "persen": 2.78
+        },
+        "asmat": {
+          "terpapar": 10222,
+          "persen": 8.8
+        },
+        "mappi": {
+          "terpapar": 55756,
+          "persen": 48.04
+        },
+        "boven_digoel": {
+          "terpapar": 550,
+          "persen": 0.82
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 11187,
+        "level_2_rendah": 49392,
+        "level_3_sedang": 12773,
+        "level_4_tinggi": 2
+      }
+    },
+    {
+      "jam_ke": 19,
+      "date": "20250902",
+      "time_utc": "1900",
+      "waktu_utc": "02 Sep 2025 19:00 UTC",
+      "waktu_wit": "03 Sep 2025 04:00 WIT",
+      "total_terpapar": 70154,
+      "persen_provinsi": 12.88,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6624,
+          "persen": 2.7
+        },
+        "asmat": {
+          "terpapar": 11603,
+          "persen": 9.99
+        },
+        "mappi": {
+          "terpapar": 51650,
+          "persen": 44.5
+        },
+        "boven_digoel": {
+          "terpapar": 277,
+          "persen": 0.41
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 26991,
+        "level_2_rendah": 33472,
+        "level_3_sedang": 9590,
+        "level_4_tinggi": 101
+      }
+    },
+    {
+      "jam_ke": 20,
+      "date": "20250902",
+      "time_utc": "2000",
+      "waktu_utc": "02 Sep 2025 20:00 UTC",
+      "waktu_wit": "03 Sep 2025 05:00 WIT",
+      "total_terpapar": 79708,
+      "persen_provinsi": 14.64,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6951,
+          "persen": 2.84
+        },
+        "asmat": {
+          "terpapar": 5100,
+          "persen": 4.39
+        },
+        "mappi": {
+          "terpapar": 67386,
+          "persen": 58.06
+        },
+        "boven_digoel": {
+          "terpapar": 271,
+          "persen": 0.4
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 15166,
+        "level_2_rendah": 54685,
+        "level_3_sedang": 9854,
+        "level_4_tinggi": 2
+      }
+    },
+    {
+      "jam_ke": 21,
+      "date": "20250902",
+      "time_utc": "2100",
+      "waktu_utc": "02 Sep 2025 21:00 UTC",
+      "waktu_wit": "03 Sep 2025 06:00 WIT",
+      "total_terpapar": 47566,
+      "persen_provinsi": 8.74,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 6425,
+          "persen": 2.62
+        },
+        "asmat": {
+          "terpapar": 16618,
+          "persen": 14.31
+        },
+        "mappi": {
+          "terpapar": 24505,
+          "persen": 21.11
+        },
+        "boven_digoel": {
+          "terpapar": 18,
+          "persen": 0.03
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 18011,
+        "level_2_rendah": 24033,
+        "level_3_sedang": 5521,
+        "level_4_tinggi": 1
+      }
+    },
+    {
+      "jam_ke": 22,
+      "date": "20250902",
+      "time_utc": "2200",
+      "waktu_utc": "02 Sep 2025 22:00 UTC",
+      "waktu_wit": "03 Sep 2025 07:00 WIT",
+      "total_terpapar": 90232,
+      "persen_provinsi": 16.57,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 8176,
+          "persen": 3.34
+        },
+        "asmat": {
+          "terpapar": 21160,
+          "persen": 18.22
+        },
+        "mappi": {
+          "terpapar": 60744,
+          "persen": 52.34
+        },
+        "boven_digoel": {
+          "terpapar": 152,
+          "persen": 0.23
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 22304,
+        "level_2_rendah": 61530,
+        "level_3_sedang": 6395,
+        "level_4_tinggi": 2
+      }
+    },
+    {
+      "jam_ke": 23,
+      "date": "20250902",
+      "time_utc": "2300",
+      "waktu_utc": "02 Sep 2025 23:00 UTC",
+      "waktu_wit": "03 Sep 2025 08:00 WIT",
+      "total_terpapar": 124118,
+      "persen_provinsi": 22.79,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 7730,
+          "persen": 3.15
+        },
+        "asmat": {
+          "terpapar": 61612,
+          "persen": 53.06
+        },
+        "mappi": {
+          "terpapar": 54775,
+          "persen": 47.2
+        },
+        "boven_digoel": {
+          "terpapar": 1,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 33292,
+        "level_2_rendah": 86625,
+        "level_3_sedang": 4201,
+        "level_4_tinggi": 0
+      }
+    },
+    {
+      "jam_ke": 24,
+      "date": "20250903",
+      "time_utc": "0000",
+      "waktu_utc": "03 Sep 2025 00:00 UTC",
+      "waktu_wit": "03 Sep 2025 09:00 WIT",
+      "total_terpapar": 41317,
+      "persen_provinsi": 7.59,
+      "kabupaten": {
+        "merauke": {
+          "terpapar": 8048,
+          "persen": 3.28
+        },
+        "asmat": {
+          "terpapar": 13529,
+          "persen": 11.65
+        },
+        "mappi": {
+          "terpapar": 19740,
+          "persen": 17.01
+        },
+        "boven_digoel": {
+          "terpapar": 0,
+          "persen": 0.0
+        }
+      },
+      "per_level": {
+        "level_1_terluar": 758,
+        "level_2_rendah": 15438,
+        "level_3_sedang": 25121,
+        "level_4_tinggi": 0
+      }
+    }
+  ]
+}

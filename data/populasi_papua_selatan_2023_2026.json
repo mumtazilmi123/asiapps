@@ -1,0 +1,237 @@
+{
+  "source": "WorldPop Constrained 100m (idn_pop CN_100m_R2025A_v1)",
+  "bounds": [
+    [
+      -9.1275,
+      137.494165
+    ],
+    [
+      -4.540833,
+      141.020832
+    ]
+  ],
+  "imagesByYear": {
+    "2023": "data/worldpop_papua_selatan_2023.png",
+    "2024": "data/worldpop_papua_selatan_2024.png",
+    "2025": "data/worldpop_papua_selatan_2025.png",
+    "2026": "data/worldpop_papua_selatan_2026.png"
+  },
+  "years": {
+    "2023": {
+      "total_populasi": 535704,
+      "total_luas_km2": 117858.97,
+      "kabupaten": {
+        "asmat": {
+          "tahun": 2023,
+          "kode_kab": "93.04",
+          "kabupaten_id": "asmat",
+          "kabupaten": "Kabupaten Asmat",
+          "luas_km2": 25018.66,
+          "populasi": 114230,
+          "populasi_exact": 114229.7,
+          "kepadatan_jiwa_km2": 4.57,
+          "piksel_berpenghuni": 8470,
+          "max_per_piksel": 227.34
+        },
+        "boven_digoel": {
+          "tahun": 2023,
+          "kode_kab": "93.02",
+          "kabupaten_id": "boven_digoel",
+          "kabupaten": "Kabupaten Boven Digoel",
+          "luas_km2": 23558.27,
+          "populasi": 66128,
+          "populasi_exact": 66128.44,
+          "kepadatan_jiwa_km2": 2.81,
+          "piksel_berpenghuni": 17107,
+          "max_per_piksel": 68.24
+        },
+        "mappi": {
+          "tahun": 2023,
+          "kode_kab": "93.03",
+          "kabupaten_id": "mappi",
+          "kabupaten": "Kabupaten Mappi",
+          "luas_km2": 24265.59,
+          "populasi": 114194,
+          "populasi_exact": 114194.25,
+          "kepadatan_jiwa_km2": 4.71,
+          "piksel_berpenghuni": 18002,
+          "max_per_piksel": 118.0
+        },
+        "merauke": {
+          "tahun": 2023,
+          "kode_kab": "93.01",
+          "kabupaten_id": "merauke",
+          "kabupaten": "Kabupaten Merauke",
+          "luas_km2": 45016.45,
+          "populasi": 241152,
+          "populasi_exact": 241152.31,
+          "kepadatan_jiwa_km2": 5.36,
+          "piksel_berpenghuni": 57704,
+          "max_per_piksel": 84.24
+        }
+      }
+    },
+    "2024": {
+      "total_populasi": 540166,
+      "total_luas_km2": 117858.97,
+      "kabupaten": {
+        "asmat": {
+          "tahun": 2024,
+          "kode_kab": "93.04",
+          "kabupaten_id": "asmat",
+          "kabupaten": "Kabupaten Asmat",
+          "luas_km2": 25018.66,
+          "populasi": 115191,
+          "populasi_exact": 115191.06,
+          "kepadatan_jiwa_km2": 4.6,
+          "piksel_berpenghuni": 8487,
+          "max_per_piksel": 228.77
+        },
+        "boven_digoel": {
+          "tahun": 2024,
+          "kode_kab": "93.02",
+          "kabupaten_id": "boven_digoel",
+          "kabupaten": "Kabupaten Boven Digoel",
+          "luas_km2": 23558.27,
+          "populasi": 66678,
+          "populasi_exact": 66677.66,
+          "kepadatan_jiwa_km2": 2.83,
+          "piksel_berpenghuni": 17168,
+          "max_per_piksel": 68.69
+        },
+        "mappi": {
+          "tahun": 2024,
+          "kode_kab": "93.03",
+          "kabupaten_id": "mappi",
+          "kabupaten": "Kabupaten Mappi",
+          "luas_km2": 24265.59,
+          "populasi": 115139,
+          "populasi_exact": 115139.11,
+          "kepadatan_jiwa_km2": 4.74,
+          "piksel_berpenghuni": 18059,
+          "max_per_piksel": 118.9
+        },
+        "merauke": {
+          "tahun": 2024,
+          "kode_kab": "93.01",
+          "kabupaten_id": "merauke",
+          "kabupaten": "Kabupaten Merauke",
+          "luas_km2": 45016.45,
+          "populasi": 243158,
+          "populasi_exact": 243158.09,
+          "kepadatan_jiwa_km2": 5.4,
+          "piksel_berpenghuni": 57814,
+          "max_per_piksel": 84.85
+        }
+      }
+    },
+    "2025": {
+      "total_populasi": 544513,
+      "total_luas_km2": 117858.97,
+      "kabupaten": {
+        "asmat": {
+          "tahun": 2025,
+          "kode_kab": "93.04",
+          "kabupaten_id": "asmat",
+          "kabupaten": "Kabupaten Asmat",
+          "luas_km2": 25018.66,
+          "populasi": 116126,
+          "populasi_exact": 116126.23,
+          "kepadatan_jiwa_km2": 4.64,
+          "piksel_berpenghuni": 8495,
+          "max_per_piksel": 230.07
+        },
+        "boven_digoel": {
+          "tahun": 2025,
+          "kode_kab": "93.02",
+          "kabupaten_id": "boven_digoel",
+          "kabupaten": "Kabupaten Boven Digoel",
+          "luas_km2": 23558.27,
+          "populasi": 67214,
+          "populasi_exact": 67213.7,
+          "kepadatan_jiwa_km2": 2.85,
+          "piksel_berpenghuni": 17202,
+          "max_per_piksel": 69.15
+        },
+        "mappi": {
+          "tahun": 2025,
+          "kode_kab": "93.03",
+          "kabupaten_id": "mappi",
+          "kabupaten": "Kabupaten Mappi",
+          "luas_km2": 24265.59,
+          "populasi": 116060,
+          "populasi_exact": 116060.05,
+          "kepadatan_jiwa_km2": 4.78,
+          "piksel_berpenghuni": 18108,
+          "max_per_piksel": 119.78
+        },
+        "merauke": {
+          "tahun": 2025,
+          "kode_kab": "93.01",
+          "kabupaten_id": "merauke",
+          "kabupaten": "Kabupaten Merauke",
+          "luas_km2": 45016.45,
+          "populasi": 245113,
+          "populasi_exact": 245112.84,
+          "kepadatan_jiwa_km2": 5.44,
+          "piksel_berpenghuni": 57887,
+          "max_per_piksel": 85.5
+        }
+      }
+    },
+    "2026": {
+      "total_populasi": 548731,
+      "total_luas_km2": 117858.97,
+      "kabupaten": {
+        "asmat": {
+          "tahun": 2026,
+          "kode_kab": "93.04",
+          "kabupaten_id": "asmat",
+          "kabupaten": "Kabupaten Asmat",
+          "luas_km2": 25018.66,
+          "populasi": 117039,
+          "populasi_exact": 117039.43,
+          "kepadatan_jiwa_km2": 4.68,
+          "piksel_berpenghuni": 8516,
+          "max_per_piksel": 231.68
+        },
+        "boven_digoel": {
+          "tahun": 2026,
+          "kode_kab": "93.02",
+          "kabupaten_id": "boven_digoel",
+          "kabupaten": "Kabupaten Boven Digoel",
+          "luas_km2": 23558.27,
+          "populasi": 67733,
+          "populasi_exact": 67733.03,
+          "kepadatan_jiwa_km2": 2.88,
+          "piksel_berpenghuni": 17252,
+          "max_per_piksel": 69.59
+        },
+        "mappi": {
+          "tahun": 2026,
+          "kode_kab": "93.03",
+          "kabupaten_id": "mappi",
+          "kabupaten": "Kabupaten Mappi",
+          "luas_km2": 24265.59,
+          "populasi": 116952,
+          "populasi_exact": 116952.43,
+          "kepadatan_jiwa_km2": 4.82,
+          "piksel_berpenghuni": 18169,
+          "max_per_piksel": 120.57
+        },
+        "merauke": {
+          "tahun": 2026,
+          "kode_kab": "93.01",
+          "kabupaten_id": "merauke",
+          "kabupaten": "Kabupaten Merauke",
+          "luas_km2": 45016.45,
+          "populasi": 247007,
+          "populasi_exact": 247006.73,
+          "kepadatan_jiwa_km2": 5.49,
+          "piksel_berpenghuni": 58051,
+          "max_per_piksel": 86.1
+        }
+      }
+    }
+  }
+}
